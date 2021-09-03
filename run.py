@@ -1,6 +1,8 @@
 #!/usr/bin/env python3.6
 
 from user import User
+from credentials import Credentials
+
 def create_user(user_name,pwd):
 
     '''
@@ -23,7 +25,28 @@ def check_existing_user(user,pwd3):
     function that checks if a user exists 
 
     '''
-    return User.user_exist(user,pwd3)    
+    return User.user_exist(user,pwd3)
+
+
+
+def create_credential(app,name,passcode):
+
+    '''
+    function to create a new user
+
+    '''
+    new_credential = Credentials(app,name,passcode)
+    return new_credential
+   
+
+def credentials_saved(credentials):
+
+    '''
+    function that will save user credentials
+
+    '''
+    credentials.save_credentials()
+
 
 
 def main():
@@ -88,7 +111,7 @@ def main():
 
                     print('\n')
 
-                    print(f'logged in successfully ! Welcome {my_user_name} where would you like to navigate to ? ')
+                    print(f'logged in successfully ! Where would you like to navigate to {my_user_name}? ')
 
                     print('\n')
 
@@ -101,7 +124,21 @@ def main():
 
                         if shorter_code == 'sc':
 
-                            print('chill')
+                            print('name of application:')
+                            application_name = input()
+
+                            print('username:')
+
+                            credential_user = input()
+
+                            print('password:')
+
+                            credential_password = input()
+
+                            credentials_saved(create_credential(application_name,credential_user,credential_password))
+
+                            print(f'Your {application_name} credentials have been successfully saved')
+
 
                         break
 
