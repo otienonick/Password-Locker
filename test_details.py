@@ -9,7 +9,7 @@ class TestUser(unittest.TestCase):
         a method that runs before any test
 
         '''
-        self.new_user  =User('nick','1982') #create a dummy user
+        self.new_user  = User('nick','1982') #create a dummy user
 
     def test_init(self):
         
@@ -30,4 +30,21 @@ class TestUser(unittest.TestCase):
         self.assertEqual(len(User.user_list),1)  
 
 
+    def test_user_exists(self):
         
+        '''
+        test to check if we can return a Boolean  if we cannot find the user.
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Test","user")
+        test_user.save_user()
+
+        user_exists = User.user_exist("Test","user")
+
+        self.assertTrue(user_exists)
+
+
+
+if __name__ == '__main__':
+    unittest.main()
