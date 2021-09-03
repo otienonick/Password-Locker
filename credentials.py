@@ -24,3 +24,47 @@ class Credentials:
         '''
         Credentials.credentials_list.append(self) 
 
+    @classmethod
+
+    def find_by_app(cls,appname):
+
+        '''
+        Method that takes in an appname and returns user's credential that matches that appname.
+
+        Args:
+            appname: appname to search for
+        Returns :
+
+            user's credentials that matches the appname.
+        '''
+
+        for app_credential in cls.credentials_list:
+            if app_credential.app_name == appname:
+                return app_credential
+
+
+    @classmethod
+    def user_credential_exist(cls,appname):
+
+        '''
+        Method that checks if a user's credantial details exists from the credentials list.
+
+        Args:
+            appname: appname to search if it exists
+        Returns :
+            Boolean: True or false depending if the credential exists
+        '''
+        for app_credential in cls.credentials_list:
+            if app_credential.app_name == appname:
+                    return True
+
+        return False
+
+
+
+    @classmethod
+    def display_user_credential(cls):
+        '''
+        method that returns the credentials  list
+        '''
+        return cls.credentials_list  
