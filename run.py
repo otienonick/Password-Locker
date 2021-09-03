@@ -33,6 +33,7 @@ def main():
         user_name = input()
 
         print(f'Hello {user_name}. what would you like to do?')
+
         print('\n')
 
         while True:
@@ -50,32 +51,27 @@ def main():
 
                 pwds = input()
 
-                save_users(create_user(user_names,pwds))
+                print('comfirm password:')
 
-                print('\n')
+                pwds2 = input()
+                
 
-                print(f' Congratulations {user_names}!! New account successfully created.'.upper())
-                print('\n')
-            
-                print('Proceed to login:'.upper())
+                if pwds == pwds2:
 
-                print('username:')
+                    save_users(create_user(user_names,pwds))
 
-                used_name = input()
+                    print('\n')
 
-                print('password:')
+                    print(f' Congratulations {user_names}!! New account successfully created.'.upper())
+                    print('\n')
+                
+                    print('Proceed to login:'.upper())
 
-                pwd2 = input()
+                else:
 
-                if used_name != user_names or pwd2 != pwds:
+                    print('passwords do not match!')
 
-                    print('Invalid username or password!')
-
-                else:    
-
-                    print(f'{used_name} welcome to your account')
-
-
+              
             elif short_code == 'lg':
 
                 print('Welcome!!!')
@@ -90,8 +86,25 @@ def main():
 
                 if check_existing_user(my_user_name,my_pwd):
 
+                    print('\n')
 
-                    print(f'logged in successfully')
+                    print(f'logged in successfully ! Welcome {my_user_name} where would you like to navigate to ? ')
+
+                    print('\n')
+
+                    while True:
+
+                        print('Use these short codes : sc - store your credentials ,cr- create new credentials dc - display your credentials , dd - delete existing credentials ,ex - logout')
+                        
+                        shorter_code =  input().lower()
+
+
+                        if shorter_code == 'sc':
+
+                            print('chill')
+
+                        break
+
 
 
                 else:    
@@ -99,8 +112,6 @@ def main():
                     print('Account does not exist!')
 
                     
-
-                
 
 
 if __name__ == '__main__':
