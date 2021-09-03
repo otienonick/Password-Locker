@@ -13,7 +13,7 @@ class User:
 
         '''
         
-        self.username =username
+        self.username = username
         self.password = password
 
     def save_user(self):
@@ -23,5 +23,21 @@ class User:
             
         '''
         User.user_list.append(self)    
+        
+
+    @classmethod
+    def user_exist(cls,my_used_name,my_used_password):
+        '''
+        Method that checks if a user exists from the user_list.
+        Args:
+            number: username and password to search if it exists
+        Returns :
+            Boolean: True or false depending if the user exists
+        '''
+        for user in cls.user_list:
+            if user.username == my_used_name and user.password == my_used_password:
+                    return True
+
+        return False
         
  
