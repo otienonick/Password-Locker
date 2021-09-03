@@ -1,18 +1,18 @@
 class Credentials:
-    
+
     '''
     class that generates a new instance of credentials.
     '''
     
     credentials_list = []
 
-    def __init__(self,username,password):
+    def __init__(self,app_name,username,password):
 
         '''
         a method that defines the properties of the class object.
 
         '''
-        
+        self.app_name = app_name
         self.username = username
         self.password = password
 
@@ -22,4 +22,5 @@ class Credentials:
          method that saves  credentials.
             
         '''
-        Credentials.credentials_list.append(self)    
+        Credentials.credentials_list.append(self) 
+
