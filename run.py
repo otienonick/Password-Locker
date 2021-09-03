@@ -47,7 +47,28 @@ def credentials_saved(credentials):
     '''
     credentials.save_credentials()
 
+def find_credential(appname):
 
+    '''
+    function that finds a user's credentials by appname and returns the credentials
+
+    '''
+    return Credentials.find_by_app(appname)     
+
+def check_existing_user(appname):
+
+    '''
+    function that checks if a user's details exists with that appname and returns a boolean.
+
+    '''
+    return Credentials.user_credential_exist(appname)
+
+
+def display_credentials():
+    '''
+    Function that returns all the saved user's credentials.
+    '''
+    return Credentials.display_user_credential()     
 
 def main():
 
