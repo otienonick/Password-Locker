@@ -1,3 +1,4 @@
+import pyperclip
 class Credentials:
 
     '''
@@ -66,7 +67,7 @@ class Credentials:
     def display_user_credential(cls):
         '''
         method that returns the credentials  list.
-        
+
         '''
         return cls.credentials_list  
 
@@ -75,3 +76,10 @@ class Credentials:
         method that deletes saved credentials from the list.
         '''
         Credentials.credentials_list.remove(self)    
+
+    @classmethod
+    def copy_credentials(cls,appname):
+        user_found = Credentials.find_by_app(appname)
+        pyperclip.copy(user_found.username)
+ 
+    
