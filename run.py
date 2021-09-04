@@ -2,6 +2,7 @@
 
 from user import User
 from credentials import Credentials
+from random import randint
 
 def create_user(user_name,pwd):
 
@@ -55,7 +56,7 @@ def find_credential(appname):
     '''
     return Credentials.find_by_app(appname)     
 
-def check_existing_user(appname):
+def check_existing_user_credential(appname):
 
     '''
     function that checks if a user's details exists with that appname and returns a boolean.
@@ -160,8 +161,73 @@ def main():
 
                             print(f'Your {application_name} credentials have been successfully saved')
 
+                        elif shorter_code == 'cr':
+                            print('name of application:')
 
-                        break
+                            appname = input()
+
+                            print('Your Username:')
+
+                            app_user_name =input()
+
+                            while True:
+
+                                print ( 'Choose the following options: 1 - create your own password , 2 - let password locker generate a password for me')
+
+                                options = input()
+
+                                if options == '1':
+                                        print('create password:') 
+
+                                        password = input()
+
+                                elif options =='2':
+
+                                    password  = ''
+                                    for i in range(5):
+                                        i = chr(randint(65,90))
+                                        for j in range(5):
+                                            j = chr(randint(65,90)).lower()
+                                        password = str(password) + i + j
+
+                                    
+                                    print(f'here is your password : {password}')
+                                    print('\n')
+
+                              
+                                break
+
+                                               
+                                                
+                            credentials_saved(create_credential(appname,app_user_name,password))
+                            
+                            print(f' Your {appname} credentials have been successfully saved')
+
+                        elif shorter_code == 'dc':
+                            if display_credentials():
+                                print('Here is a list of all your credentials')
+                                print('\n')
+
+                                for detail in display_credentials():
+                                    print(f'application name:{detail.app_name}') 
+                                    print(f'username: {detail.username}')
+                                    print(f' password:{detail.password}')
+
+                                print('\n')
+                            else:
+                                print('You dont seem to have any  app credentials saved yet')
+
+                        elif shorter_code == 'ex':
+                            print('bye')
+                            break       
+
+
+                                
+
+
+
+
+                        
 
 
 
