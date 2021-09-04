@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.6
 
+import pyperclip
 from user import User
 from credentials import Credentials
 from random import randint
@@ -79,6 +80,10 @@ def delete_credentials(credentials):
     '''
     return Credentials.credentials_list.remove(credentials)
 
+def copy_credentials(user_found):
+    return pyperclip.copy(user_found.username)  
+
+    
 
 def main():
 
@@ -151,7 +156,7 @@ def main():
 
                     while True:
 
-                        print('Use these short codes : sc - store your credentials ,cr- create new credentials dc - display your credentials , dd - delete existing credentials ,ex - logout')
+                        print('Use these short codes : sc - store your credentials ,cr- create new credentials dc - display your credentials , dd - delete existing credentials , cu - copy user credentials to clipboard , ex - logout')
                         print('.'*20)
                         
                         shorter_code =  input().lower()
@@ -173,6 +178,8 @@ def main():
                             credentials_saved(create_credential(application_name,credential_user,credential_password))
 
                             print(f'Your {application_name} credentials have been successfully saved')
+                            print('\n')
+                            print('.' *50)
 
                         elif shorter_code == 'cr':
 
@@ -187,7 +194,7 @@ def main():
                             while True:
 
                                 print ( 'Choose the following options: 1 - create my own password , 2 - let password locker generate a password for me')
-                                print('.'*20)
+                                print('.'*50)
 
                                 options = input()
 
@@ -218,13 +225,13 @@ def main():
                             
                             print(f' Your {appname} credentials have been successfully saved')
                             print('\n')
-                            print('.' *20)
+                            print('.' *50)
 
                         elif shorter_code == 'dc':
                             if display_credentials():
                                 print('Here is a list of all your credentials')
                                 print('\n')
-                                print('.'*20)
+                                print('.'*50)
 
                                 for detail in display_credentials():
                                     print(f'application name:{detail.app_name}') 
@@ -252,6 +259,20 @@ def main():
                             else:
 
                                 print('That app does not exist in your credentials list')
+                        
+                        elif shorter_code == 'cu':
+                            print('enter the app name of the credentials you want copy')
+                            search_app = input()
+                            if check_existing_user_credential(search_app):
+                                copy_app_details = find_credential(search_app)
+                                copy_credentials(copy_app_details)
+
+                                print(f'{copy_app_details.app_name} credentials have been succesfully copied to clipboard')
+                                print('\n')
+                                print('.' *50)
+
+                            else:
+                                print(f'{search_app} does not exist in your credentials list')    
 
                         elif shorter_code == 'ex':
                             print('you are logged out...bye')
