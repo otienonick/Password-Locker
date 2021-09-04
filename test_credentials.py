@@ -81,6 +81,17 @@ class TestCredentials(unittest.TestCase):
 
         self.assertTrue(credential_exists)
 
+    def test_deleted_credentials(self):
+
+         '''
+         testcase to test if credentials are deleted in the credentials list.
+
+         '''   
+         self.new_credential.save_credentials()
+         test_credentials = Credentials('app','credential','2021') # new contact
+         test_credentials.save_credentials()
+         self.new_credential.deleted_credentials() #deleting a credential
+         self.assertEqual(len(Credentials.credentials_list),1)
 
 if __name__ == '__main__':
     unittest.main()
