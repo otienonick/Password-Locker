@@ -22,10 +22,12 @@
 
 ## BDD
 |Behaviour|Input|Output|
-|:---------|:-----|:------|
-|Run the application in the terminal of your code editor|-$ ./run.py|Hello what is your name?|
-|input your name|nick|Welcome nick to Password locker ehat do you want to do? -ca - create a new account , lg - login to your account xx-exit
- 
+|:--------|:-------|:------|
+|Run the application in the terminal of your code editor|$ ./run.py|Hello what is your name?|
+|input your name|name|Welcome name to Password locker what do you want to do? -ca - create a new account , lg - login to your account xx-exit
+| input ca|input username,password and comfirm password|congratualtions username new account created.Proceed to login|
+|input lg|input creted username and password| logged in successfully where would you like to navigate to? sc-store your credentials, cr-create new credentials dc-display your credentials, dd-delete existing credentials, cu-copy user credentials to clipboard,ex-logout|
+
    
 ### Known Bugs
     The application works perfectly well,there are no known bugs.
