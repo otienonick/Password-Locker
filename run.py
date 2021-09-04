@@ -4,7 +4,6 @@ import random
 import pyperclip
 from user import User
 from credentials import Credentials
-import random 
 
 def create_user(user_name,pwd):
 
