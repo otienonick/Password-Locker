@@ -65,6 +65,13 @@ class Credentials:
     @classmethod
     def display_user_credential(cls):
         '''
-        method that returns the credentials  list
+        method that returns the credentials  list.
+        
         '''
         return cls.credentials_list  
+
+    def deleted_credentials(self):
+        '''
+        method that deletes saved credentials from the list.
+        '''
+        Credentials.credentials_list.remove(self)    
