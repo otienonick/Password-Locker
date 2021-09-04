@@ -71,6 +71,15 @@ def display_credentials():
     '''
     return Credentials.display_user_credential()     
 
+def delete_credentials(credentials):
+
+    '''
+    a function that deletes a user's credentials
+
+    '''
+    return Credentials.credentials_list.remove(credentials)
+
+
 def main():
 
         print('Helo welcome to Password Locker.What is your name?')
@@ -78,11 +87,12 @@ def main():
         user_name = input()
 
         print(f'Hello {user_name}. what would you like to do?')
+        print('.'*20)
 
         print('\n')
 
         while True:
-            print('Use these short codes : ca - create a new account ,lg - login to your account ,ex - exit')
+            print('Use these short codes : ca - create a new account ,lg - login to your account ,xx - exit')
 
             short_code =  input().lower()
 
@@ -108,6 +118,7 @@ def main():
                     print('\n')
 
                     print(f' Congratulations {user_names}!! New account successfully created.'.upper())
+
                     print('\n')
                 
                     print('Proceed to login:'.upper())
@@ -136,10 +147,12 @@ def main():
                     print(f'logged in successfully ! Where would you like to navigate to {my_user_name}? ')
 
                     print('\n')
+                    print('.' *20)
 
                     while True:
 
                         print('Use these short codes : sc - store your credentials ,cr- create new credentials dc - display your credentials , dd - delete existing credentials ,ex - logout')
+                        print('.'*20)
                         
                         shorter_code =  input().lower()
 
@@ -162,6 +175,7 @@ def main():
                             print(f'Your {application_name} credentials have been successfully saved')
 
                         elif shorter_code == 'cr':
+
                             print('name of application:')
 
                             appname = input()
@@ -172,7 +186,8 @@ def main():
 
                             while True:
 
-                                print ( 'Choose the following options: 1 - create your own password , 2 - let password locker generate a password for me')
+                                print ( 'Choose the following options: 1 - create my own password , 2 - let password locker generate a password for me')
+                                print('.'*20)
 
                                 options = input()
 
@@ -202,11 +217,14 @@ def main():
                             credentials_saved(create_credential(appname,app_user_name,password))
                             
                             print(f' Your {appname} credentials have been successfully saved')
+                            print('\n')
+                            print('.' *20)
 
                         elif shorter_code == 'dc':
                             if display_credentials():
                                 print('Here is a list of all your credentials')
                                 print('\n')
+                                print('.'*20)
 
                                 for detail in display_credentials():
                                     print(f'application name:{detail.app_name}') 
@@ -217,25 +235,41 @@ def main():
                             else:
                                 print('You dont seem to have any  app credentials saved yet')
 
+                        elif shorter_code == 'dd':
+
+                            print('Enter the application name of the credentials yo want to delete')
+
+                            search_app = input()
+
+                            if check_existing_user_credential(search_app):
+
+                                delete_app = find_credential(search_app)
+
+                                delete_credentials(delete_app)
+
+                                print(f'{delete_app.app_name} has been successfully deleted')
+
+                            else:
+
+                                print('That app does not exist in your credentials list')
+
                         elif shorter_code == 'ex':
-                            print('bye')
+                            print('you are logged out...bye')
                             break       
 
-
-                                
-
-
-
-
-                        
-
-
-
+                        else:
+                            print('Please use the short codes')    
                 else:    
 
                     print('Account does not exist!')
 
-                    
+            elif short_code == 'xx':
+                print('bye')
+                break
+
+            else:
+
+                print('Please use the short codes')      
 
 
 if __name__ == '__main__':
