@@ -1,9 +1,10 @@
 #!/usr/bin/env python3.6
 
+import random
 import pyperclip
 from user import User
 from credentials import Credentials
-from random import randint
+import random 
 
 def create_user(user_name,pwd):
 
@@ -205,16 +206,20 @@ def main():
 
                                 elif options =='2':
 
+                                    print(f'what length would you like your password to be {app_user_name}?')
+                                    pwd_length = int(input())
+                                    chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#&()*'
                                     password  = ''
-                                    for i in range(5):
-                                        i = chr(randint(65,90))
-                                        for j in range(5):
-                                            j = chr(randint(65,90)).lower()
-                                        password = str(password) + i + j
+                                    for i in range(0,pwd_length):
+                                        i = random.choice(chars)
+                                        password = password + i
 
                                     
                                     print(f'here is your password : {password}')
                                     print('\n')
+                                    
+
+                                    
 
                               
                                 break
