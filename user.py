@@ -35,7 +35,7 @@ class User:
             Boolean: True or false depending if the user exists
         '''
         for user in cls.user_list:
-            if user.username == my_used_name and user.password == my_used_password:
+            if user.username == my_used_name:
                     return True
 
         return False

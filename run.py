@@ -81,7 +81,7 @@ def delete_credentials(credentials):
     return Credentials.credentials_list.remove(credentials)
 
 def copy_credentials(user_found):
-    return pyperclip.copy(user_found.username and user_found.password)  
+    return pyperclip.copy(user_found.username)  
 
     
 
@@ -210,7 +210,7 @@ def main():
                                     pwd_length = int(input())
 
                                     chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#&()*'
-                                    
+
                                     password  = ''
                                     for i in range(0,pwd_length):
                                         i = random.choice(chars)
