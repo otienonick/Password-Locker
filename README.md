@@ -20,7 +20,7 @@
 
     
 
-## BDD
+### BDD
 |Behaviour|Input|Output|
 |:--------|:-------|:------|
 |Run the application in the terminal of your code editor|$ ./run.py|Hello what is your name?|
