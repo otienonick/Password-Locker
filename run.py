@@ -81,13 +81,13 @@ def delete_credentials(credentials):
     return Credentials.credentials_list.remove(credentials)
 
 def copy_credentials(user_found):
-    return pyperclip.copy(user_found.username)  
+    return pyperclip.copy(user_found.username and user_found.password)  
 
     
 
 def main():
 
-        print('Helo welcome to Password Locker.What is your name?')
+        print('Hello welcome to PASSWORD LOCKER. What is your name?')
 
         user_name = input()
 
@@ -199,32 +199,28 @@ def main():
                                 options = input()
 
                                 if options == '1':
-                                        print('create password:') 
+                                    print('create password:') 
 
-                                        password = input()
+                                    password = input()
 
                                 elif options =='2':
 
                                     print(f'what length would you like your password to be {app_user_name}?')
+
                                     pwd_length = int(input())
+
                                     chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#&()*'
+                                    
                                     password  = ''
                                     for i in range(0,pwd_length):
                                         i = random.choice(chars)
                                         password = password + i
-
-                                    
+                          
                                     print(f'here is your password : {password}')
                                     print('\n')
-                                    
-
-                                    
-
                               
                                 break
-
-                                               
-                                                
+                  
                             credentials_saved(create_credential(appname,app_user_name,password))
                             
                             print(f' Your {appname} credentials have been successfully saved')
@@ -233,7 +229,7 @@ def main():
 
                         elif shorter_code == 'dc':
                             if display_credentials():
-                                print('Here is a list of all your credentials')
+                                print('Here is a list of all your saved  credentials')
                                 print('\n')
                                 print('.'*50)
 
@@ -245,6 +241,7 @@ def main():
                                 print('\n')
                             else:
                                 print('You dont seem to have any  app credentials saved yet')
+                                print('\n')
 
                         elif shorter_code == 'dd':
 
@@ -263,6 +260,7 @@ def main():
                             else:
 
                                 print('That app does not exist in your credentials list')
+                                print('\n')
                         
                         elif shorter_code == 'cu':
                             print('enter the app name of the credentials you want copy')

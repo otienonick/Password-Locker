@@ -80,6 +80,6 @@ class Credentials:
     @classmethod
     def copy_credentials(cls,appname):
         user_found = Credentials.find_by_app(appname)
-        pyperclip.copy(user_found.username)
+        pyperclip.copy(user_found.username and user_found.password)
  
     
