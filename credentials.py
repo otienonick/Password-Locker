@@ -78,8 +78,9 @@ class Credentials:
         Credentials.credentials_list.remove(self)    
 
     @classmethod
-    def copy_credentials(cls,appname):
+    def copy_credential(cls,appname):
         user_found = Credentials.find_by_app(appname)
-        pyperclip.copy(user_found.username and user_found.password)
+        copied = 'username: ' + user_found.username + ' password: ' + user_found.password
+        pyperclip.copy(copied)
  
     

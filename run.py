@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.6
 
 import random
-import pyperclip
 from user import User
 from credentials import Credentials
 
@@ -81,7 +80,8 @@ def delete_credentials(credentials):
     return Credentials.credentials_list.remove(credentials)
 
 def copy_credentials(user_found):
-    return pyperclip.copy(user_found.username)  
+    return Credentials.copy_credential(user_found.app_name)  
+  
 
     
 
